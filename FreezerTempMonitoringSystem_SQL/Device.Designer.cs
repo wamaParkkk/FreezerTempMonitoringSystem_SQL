@@ -29,9 +29,9 @@ namespace FreezerTempMonitoringSystem_SQL
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelDevice = new System.Windows.Forms.Panel();
             this.textBoxDeviceInfo = new System.Windows.Forms.TextBox();
             this.btnMinMaxTempSave = new System.Windows.Forms.Button();
@@ -68,9 +68,10 @@ namespace FreezerTempMonitoringSystem_SQL
             this.panelDevice.Controls.Add(this.textBoxDeviceMinTemp);
             this.panelDevice.Controls.Add(this.label3);
             this.panelDevice.Controls.Add(this.textBoxDeviceTemp);
-            this.panelDevice.Location = new System.Drawing.Point(3, 3);
+            this.panelDevice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDevice.Location = new System.Drawing.Point(0, 0);
             this.panelDevice.Name = "panelDevice";
-            this.panelDevice.Size = new System.Drawing.Size(356, 360);
+            this.panelDevice.Size = new System.Drawing.Size(362, 253);
             this.panelDevice.TabIndex = 17;
             // 
             // textBoxDeviceInfo
@@ -97,19 +98,19 @@ namespace FreezerTempMonitoringSystem_SQL
             // chartDeviceTemp
             // 
             this.chartDeviceTemp.BackColor = System.Drawing.Color.Ivory;
-            chartArea2.Name = "ChartArea1";
-            this.chartDeviceTemp.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chartDeviceTemp.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartDeviceTemp.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chartDeviceTemp.Legends.Add(legend1);
             this.chartDeviceTemp.Location = new System.Drawing.Point(5, 147);
             this.chartDeviceTemp.Name = "chartDeviceTemp";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "SeriesTempValue";
-            this.chartDeviceTemp.Series.Add(series2);
-            this.chartDeviceTemp.Size = new System.Drawing.Size(346, 207);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "SeriesTempValue";
+            this.chartDeviceTemp.Series.Add(series1);
+            this.chartDeviceTemp.Size = new System.Drawing.Size(346, 101);
             this.chartDeviceTemp.TabIndex = 17;
             this.chartDeviceTemp.Text = "chart1";
             // 
@@ -261,7 +262,7 @@ namespace FreezerTempMonitoringSystem_SQL
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelDevice);
             this.Name = "Device";
-            this.Size = new System.Drawing.Size(362, 367);
+            this.Size = new System.Drawing.Size(362, 253);
             this.Load += new System.EventHandler(this.Device_Load);
             this.panelDevice.ResumeLayout(false);
             this.panelDevice.PerformLayout();

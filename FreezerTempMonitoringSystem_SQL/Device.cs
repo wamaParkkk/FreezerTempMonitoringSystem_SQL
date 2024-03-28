@@ -17,8 +17,8 @@ namespace FreezerTempMonitoringSystem_SQL
         int iLogWriteCnt;
 
         // Temp alarm flag
-        public bool[] bTempAlarm = { false, false, false, false, false, false, false, false, false, false };
-        int[] iTempAlarmCnt = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public bool[] bTempAlarm = { false, false, false, false, false, false, false, false, false, false, false };
+        int[] iTempAlarmCnt = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         public Device(ServerForm parent, byte Module)
         {
@@ -43,7 +43,7 @@ namespace FreezerTempMonitoringSystem_SQL
 
             _TEMP_PARAMETER_LOAD();
 
-            if ((ModuleNo == 1 || ModuleNo == 3 || ModuleNo == 5 || ModuleNo == 7 || ModuleNo == 9))
+            if ((ModuleNo == 1 || ModuleNo == 3 || ModuleNo == 5 || ModuleNo == 7 || ModuleNo == 9 || ModuleNo == 11))
                 chartDeviceTemp.BackColor = Color.LavenderBlush;
 
             //bUsed = true;

@@ -23,6 +23,7 @@ namespace FreezerTempMonitoringSystem_SQL
         _FR8,
         _FR9,
         _FR10,
+        _FR11,
     }    
     
     public partial class ServerForm : Form
@@ -32,7 +33,7 @@ namespace FreezerTempMonitoringSystem_SQL
 
         string hostEquipmentInfo = "K5EE_TempHumidityMonitoring";
 
-        int iDeviceMax = 10;
+        int iDeviceMax = 11;
 
         private Socket m_ServerSocket;
         private List<Socket> m_ClientSocket;        
@@ -48,20 +49,21 @@ namespace FreezerTempMonitoringSystem_SQL
         public Device m_Device8Form;
         public Device m_Device9Form;
         public Device m_Device10Form;
+        public Device m_Device11Form;
 
         public LogForm m_logForm;
 
         // Temp값 저장 할 변수
-        public double[] iDeviceTemp1 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
-        public double[] iDeviceTemp2 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
-        public double[] iDeviceHumi1 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
-        public double[] iDeviceHumi2 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+        public double[] iDeviceTemp1 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+        public double[] iDeviceTemp2 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+        public double[] iDeviceHumi1 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+        public double[] iDeviceHumi2 = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
 
         // CONFIGURE LIST //////////////////////////////////////
         public class Configure_List
         {
-            public static double[] Configure_TempMin = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
-            public static double[] Configure_TempMax = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+            public static double[] Configure_TempMin = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
+            public static double[] Configure_TempMax = { 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00 };
         }
         ////////////////////////////////////////////////////////
 
@@ -110,7 +112,11 @@ namespace FreezerTempMonitoringSystem_SQL
 
             m_Device10Form = new Device(this, (byte)MODULE._FR10);
             m_Device10Form.Visible = false;
-            Controls.Add(m_Device10Form);            
+            Controls.Add(m_Device10Form);
+
+            m_Device11Form = new Device(this, (byte)MODULE._FR11);
+            m_Device11Form.Visible = false;
+            Controls.Add(m_Device11Form);
 
             _Init_Server();
         }
@@ -155,6 +161,9 @@ namespace FreezerTempMonitoringSystem_SQL
             if (!m_Device10Form.Visible)
                 m_Device10Form.Visible = true;
 
+            if (!m_Device11Form.Visible)
+                m_Device11Form.Visible = true;
+
             m_Device1Form.Top = 100;
             m_Device1Form.Left = 0;
 
@@ -170,20 +179,23 @@ namespace FreezerTempMonitoringSystem_SQL
             m_Device5Form.Top = 100;
             m_Device5Form.Left = 1440;
 
-            m_Device6Form.Top = 470;
+            m_Device6Form.Top = 355;
             m_Device6Form.Left = 0;
 
-            m_Device7Form.Top = 470;
+            m_Device7Form.Top = 355;
             m_Device7Form.Left = 360;
 
-            m_Device8Form.Top = 470;
+            m_Device8Form.Top = 355;
             m_Device8Form.Left = 720;
 
-            m_Device9Form.Top = 470;
+            m_Device9Form.Top = 355;
             m_Device9Form.Left = 1080;
 
-            m_Device10Form.Top = 470;
-            m_Device10Form.Left = 1440;            
+            m_Device10Form.Top = 355;
+            m_Device10Form.Left = 1440;
+
+            m_Device11Form.Top = 610;
+            m_Device11Form.Left = 0;
         }
 
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -200,6 +212,7 @@ namespace FreezerTempMonitoringSystem_SQL
                 m_Device8Form.Dispose();
                 m_Device9Form.Dispose();
                 m_Device10Form.Dispose();
+                m_Device11Form.Dispose();
             }            
 
             if (m_logForm != null)
@@ -223,6 +236,7 @@ namespace FreezerTempMonitoringSystem_SQL
             SetDoubleBuffered(m_Device8Form);
             SetDoubleBuffered(m_Device9Form);
             SetDoubleBuffered(m_Device10Form);
+            SetDoubleBuffered(m_Device11Form);
 
             SetDoubleBuffered(richTextBoxServerStatus);
             SetDoubleBuffered(richTextBoxRecvMsg);
@@ -343,6 +357,7 @@ namespace FreezerTempMonitoringSystem_SQL
             m_Device8Form._Display();
             m_Device9Form._Display();
             m_Device10Form._Display();
+            m_Device11Form._Display();
         }
 
         private void DisplayText_ServerStatus(string text)
